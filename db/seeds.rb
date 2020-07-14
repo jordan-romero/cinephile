@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 m1 = Movie.create(title: "Test Movie 1", release_date: "01-01-01", genre: "Fake", runtime: "100")
+
+l1 = List.create(name: "Test Watched List", description: "I am a test watched list not a real watched list")

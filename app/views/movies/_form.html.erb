@@ -1,20 +1,28 @@
-<%= form_with model: @movie, local:true do |form| %>
-    <p>
-        <%= form.label :title %> 
-        <%= form.text_field :title %>
-    </p>
-   <p>
+
+<div class="form-group" style="width :50em;">
+    <%= form_with model: @movie, local:true do |form| %>
+    
+    <div class= "text-weight-bold text-dark"><%= form.label :title %></div>
+    <span> <%= form.text_field :title, class: "form-control" %> </span>
+  </div>  
+   <div class="form-group" style="width :50em;">
         <%= form.label :genre %> 
-        <%= form.text_field :genre %>
-    </p>
-    <p>
+        <%= form.text_field :genre, class: "form-control" %>
+    </div>
+    <div class="form-group" style="width :50em;">
+   
         <%= form.label :runtime %> 
-        <%= form.text_field :runtime, type: 'number' %>
-    </p>
-    <p>
+        <%= form.text_field :runtime, type: 'number', class: "form-control" %>
+    </div>
+
+    <div class="form-group" style="width :50em;"> 
         <%= form.label :release_date %> 
-        <%= form.text_field :release_date, type: 'date' %>
-    </p>
-       <%= form.submit %>
+        <%= form.text_field :release_date, type: 'date', class: "form-control" %>
+    </div>
+   <div class="form-group" style="width :50em;"><%= form.collection_select :list_name, List.all, :name, :name %> 
+   </div>
+         
+      <span><%= form.submit value="Submit", class: "btn btn-outline-dark" %> </span>   
+
 
  <% end %>
