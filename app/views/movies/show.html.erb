@@ -4,11 +4,21 @@
 
     <div class="card-content">
         <h4 style="margin: 0 0 20px 0"><%= @movie.title %></h4>
-       
+            <h5> Genre(s):<%= @movie.genre %></h5>
+            <h6>Release Date: <%= @movie.release_date %></h6>
+            <h6>Runtime: <%= @movie.runtime %> minutes</h6>
+    </div>
+    <div class="card-footer">
+         <%= link_to @movie.list.name, list_path(@movie.list) if @movie.list %>
     </div>
   </div>
 
+
+
   <%= link_to "edit movie", edit_movie_path(@movie) %>
-  <%= button_to "delete movie", @movie, method: :delete %>
+  <%= button_to "delete movie", @movie, method: :delete %><br>
+
+
+  <%= link_to "View all Movies", movies_path%>
   
       

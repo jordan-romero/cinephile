@@ -1,5 +1,15 @@
 <h1>I am the list Show</h1>
 
-<%= @list.name %>
+<%= @list.name %><br>
 
-<%= @list.description %>
+<%= @list.description %><br>
+
+<ul><% @list.movies.each do |movie| %>
+
+<li> <%= movie.title %></li>
+
+
+<% end %>
+</ul>
+
+<%= link_to "All Lists", lists_path %>
