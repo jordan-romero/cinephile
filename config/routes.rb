@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :users
   resources :lists
   resources :movies
   root to: 'pages#home'

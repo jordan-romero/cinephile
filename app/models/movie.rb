@@ -1,6 +1,7 @@
 class Movie < ApplicationRecord
     validates :title, presence: true 
     belongs_to :list
+    has_many :reviews 
     
     def list_name=(name)
         self.list = List.find_by(name: name)
