@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
 
     def new 
         @movie = Movie.new
+        @movie.reviews.build
     end 
 
     def create 
@@ -19,6 +20,7 @@ class MoviesController < ApplicationController
     end
 
     def edit 
+        @movie.reviews.build 
     end 
 
     def update
@@ -54,7 +56,14 @@ class MoviesController < ApplicationController
     end 
 
     def movie_params
-        params.require(:movie).permit(:title, :release_date, :genre, :runtime, :list_name)
-    end
+        params.require(:movie).permit(:title, 
+        :release_date, 
+        :genre,
+        :runtime, 
+        :list_name, 
+        reviews_attributes: 
+        [:rating, :content, :id, :user_id])
+    end 
+   
 
 end

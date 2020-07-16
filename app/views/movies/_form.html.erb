@@ -21,6 +21,22 @@
     </div>
    <div class="form-group" style="width :50em;"><%= form.collection_select :list_name, List.all, :name, :name %> 
    </div>
+
+    <%= form.label "Review:" %><br>
+
+   <%= form.fields_for :reviews do |reviews| %>
+    <div class="form-group" style="width :50em;">
+        <%= reviews.label :rating %>
+        <%= reviews.text_field :rating, type: 'number', class: "form-control" %>
+    </div>
+    <div  class="form-group" style="width :50em;">
+        <%= reviews.label :content %>
+        <%= reviews.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="form-group" style="width :50em;"><%= reviews.collection_select :user_id, User.all, :id, :name %> 
+
+    <% end %>
          
       <span><%= form.submit value="Submit", class: "btn btn-outline-dark" %> </span>   
 
