@@ -1,0 +1,16 @@
+<h1>I am the Review Index</h1>
+<ul>
+<% @reviews.each_with_index do |review|%>
+
+<li class="list-unstyled"> <%= link_to review.movie.title, review_path(review) %> <li>
+
+
+<% end %>
+</ul>
+
+
+<%= link_to "Review a Movie", new_review_path %>
+
+
+
+
