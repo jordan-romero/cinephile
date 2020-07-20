@@ -1,7 +1,13 @@
 <h1 class="display-4 text-primary">I am the Index</h1>
 
-<%= text_field_tag 'search', nil, placeholder: 'Search Movies' %>
-<%= submit_tag ("Search"), class: 'btn btn-outline-info ml-3' %>
+<%= form_tag(movies_path, method: :get) do %>
+
+    <div class= "form-inline pb-3">
+        
+        <%= text_field_tag 'search', nil, placeholder: 'Search Movies' %>
+        <%= submit_tag ("Search"), class: 'btn btn-outline-dark ml-3' %>
+        </div>
+    <% end %>
 <ul>
 <% @movies.each do |movie|%>
 <li>
@@ -9,5 +15,7 @@
 </li>
 <% end %>
 </ul><br>
+
+<h2> <%= link_to "Review a Movie", new_review_path %> </h2>
 
 <%= link_to "Add a Movie to your Collection", new_movie_path%>

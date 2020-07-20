@@ -2,12 +2,14 @@ class MoviesController < ApplicationController
     before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
     def index 
-        @movies = Movie.all
+       # @api_movies = OmdbService.search(params[:query])
+        @movies = Movie.all 
     end 
+
 
     def new 
         @movie = Movie.new
-        @movie.reviews.build
+        
     end 
 
     def create 
@@ -20,7 +22,6 @@ class MoviesController < ApplicationController
     end
 
     def edit 
-        @movie.reviews.build 
     end 
 
     def update
@@ -60,9 +61,7 @@ class MoviesController < ApplicationController
         :release_date, 
         :genre,
         :runtime, 
-        :list_name, 
-        reviews_attributes: 
-        [:rating, :content, :id, :user_id])
+        :list_name)
     end 
    
 

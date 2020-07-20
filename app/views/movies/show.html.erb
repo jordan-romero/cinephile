@@ -16,15 +16,22 @@
             </ul>
     </div>
     <div class="card-footer">
-         <%= link_to @movie.list.name, list_path(@movie.list) if @movie.list %>
+        
+         <div>Watch List: <%= link_to @movie.list.name, list_path(@movie.list) if @movie.list %></div>
     </div>
   </div>
 
+  <h6> <%= link_to "Review A Movie", new_review_path%>  </h6>
   
 
 
 
-  <%= link_to "edit movie", edit_movie_path(@movie) %>
+
+
+
+
+
+  <div><%= link_to "edit movie", edit_movie_path(@movie) %></div>
   <%= button_to "delete movie", @movie, method: :delete %><br>
 
 
