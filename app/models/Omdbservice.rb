@@ -1,16 +1,15 @@
-class OmdbService < ApplicationRecord
-    include Httparty
+BASE_URL = "http://www.omdbapi.com/?s="
+API_PARTIAL_URL = "&apikey=#{ENV['OMDB_API_KEY']}" 
 
-    BASE_URL = "http://www.omdbapi.com/"
-    API_PARTIAL_URL = "&apikey=#{ENV['OMDB_API_KEY']}" 
+class OmdbService 
+    
 
-    def search
-       result = Httparty.get(BASE_URL + @search + API_PARTIAL_URL).to_json
-       @request_hash = JSON.parse(request)
+    def self.search
+       result = HTTParty.get(BASE_URL + @search + API_PARTIAL_URL)
     end 
     
     def initialize(query)
-        @search = "?s=#{query}"
+        @search = "#{query}"
     end 
 
 end 

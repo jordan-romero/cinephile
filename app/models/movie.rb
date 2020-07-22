@@ -20,4 +20,8 @@ class Movie < ApplicationRecord
     # def self.search(search)
     #     where("name LIKE ?", "%#{search}%")
     # end 
+
+    def find_or_create_by_title(title)
+        self.
+    end 
 end
