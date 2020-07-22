@@ -22,6 +22,7 @@ class Movie < ApplicationRecord
     # end 
 
     def find_or_create_by_title(title)
-        self.
+        byebug
+        OmbdService.find_or_create_by(title: title)
     end 
 end
