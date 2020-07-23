@@ -16,3 +16,5 @@ class OmdbService
     # end 
 
 end 
+
+##p.each do |movie| movie.each do |title, value| puts "#{value}" end end 

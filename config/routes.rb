@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :reviews, only: [:create, :update, :destroy]
   resources :users
   resources :lists
   resources :movies do 
-    resources :reviews, only: [:show, :new, :edit, :index]
+    resources :reviews
   end 
+  resources :reviews, only: [:create, :update, :destroy]
   root to: 'pages#home'
+
+  get "/search", to: "movies#index"
 
   #post "search_movies" => "movies#search", as: :search
   

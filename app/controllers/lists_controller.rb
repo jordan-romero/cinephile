@@ -35,6 +35,7 @@ class ListsController < ApplicationController
 
     def destroy 
         if @list.destroy
+            @movie = @list.movies
             redirect_to lists_path
         else 
             render 'edit'

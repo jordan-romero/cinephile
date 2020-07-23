@@ -2,7 +2,7 @@
 <ul class="list-unstyled">
 <% @movie.reviews.each do |review| %>
         
-     <li> <%= link_to review.rating, movie_review_path(review.movie) %> - <%= review.content %> reviewed by: <%= review.user.name%></li>
+     <li> <%= link_to review.rating, movie_review_path(@movie, review) %> - <%= review.content %> reviewed by: <%= review.user.name%></li>
      
 <% end %>
 

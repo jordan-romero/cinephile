@@ -63,8 +63,9 @@ class ReviewsController < ApplicationController
 
     def update          
         @review.update(review_params)
+        @movie = @review.movie 
         if @review.save 
-            redirect_to @review 
+            redirect_to movie_review_path(@movie, @review)
         else 
             render 'edit'
         end 
@@ -72,6 +73,7 @@ class ReviewsController < ApplicationController
 
     def destroy 
         @review.destroy(review_params)
+        @movie = @review.movie 
         redirect_to reviews_path
     end 
 

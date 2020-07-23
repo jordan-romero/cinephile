@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
     before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
     def index 
-       # @api_movies = OmdbService.search(params[:query])
+        @api_movie = OmdbService.search(params[:search])
         @movies = Movie.all 
     end 
 
