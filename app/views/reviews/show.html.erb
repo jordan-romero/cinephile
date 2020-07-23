@@ -3,10 +3,9 @@
 <%= @review.rating %><br>
 
 <%= @review.content %>
-
+<p><%= link_to "Edit Review", edit_movie_review_path(@review.movie, @review) if @review.movie %></p>
 </li>
 
 </ul>
 
 
-<%= link_to "Edit Review", edit_review_path(@review) %>

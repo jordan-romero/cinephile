@@ -7,13 +7,10 @@
             <h5> Genre(s):<%= @movie.genre %></h5>
             <h6>Release Date: <%= @movie.release_date %></h6>
             <h6>Runtime: <%= @movie.runtime %> minutes</h6>
-            <p> Reviews: <%= @movie.reviews.count%></p>
-            <ul>
-            <% @movie.reviews.each do |review| %>
-                <li><%= review.rating %></li>
-                <li><%= review.content %></li>
-            <% end %>
-            </ul>
+            <p>  View Movie Reviews: <%= link_to @movie.reviews.count, movie_reviews_path(@movie) %> </p>
+           
+            <h6> Review <%= link_to @movie.title, new_movie_review_path(@movie)%>  </h6>
+        
     </div>
     <div class="card-footer">
         
@@ -21,7 +18,6 @@
     </div>
   </div>
 
-  <h6> <%= link_to "Review A Movie", new_review_path%>  </h6>
   
 
 
