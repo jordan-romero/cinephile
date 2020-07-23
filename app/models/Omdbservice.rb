@@ -5,14 +5,24 @@ class OmdbService
     
 
     def self.search(search)
+        byebug
        result = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL).to_s 
-       # parsed_response = is what the hash is set equal to when I use t instead of s 
-       parsed_response = JSON.parse(result)
-       parsed_response
+       # response = is what the hash is set equal to when I use t instead of s 
+       reponse = JSON.parse(result)
+       response
     end 
     
     # def initialize(query)
     #     @search = "#{query}"
+    # end 
+    # def self.search(movie)
+    #     search["Search"].each{|movie| movie.create_movie_from_api(movie)}
+    # end 
+
+    # def self.create_movie_from_api(search)
+        
+    #     create(title: search:["Title"]
+    #            runtime: search:["Runtime"] )
     # end 
 
 end 
