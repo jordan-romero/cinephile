@@ -2,14 +2,26 @@ BASE_URL = "http://www.omdbapi.com/?s="  # using t eliminates the double hash an
 API_PARTIAL_URL = "&apikey=#{ENV['OMDB_API_KEY']}" 
 
 class OmdbService 
+
+#     require "uri"
+# require "net/http"
+
+# url = URI("http://www.omdbapi.com/?s=highlander&apikey=508d252f")
+
+# http = Net::HTTP.new(url.host, url.port);
+# request = Net::HTTP::Get.new(url)
+# request["Cookie"] = "__cfduid=db587ce483169e7e88f4523cb6b61aad61594653560"
+
+# response = http.request(request)
+# puts response.read_body
     
 
-    def self.search(search)
-        byebug
-       result = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL).to_s 
-       # response = is what the hash is set equal to when I use t instead of s 
-       reponse = JSON.parse(result)
-       response
+     def self.search(search)
+         
+        result = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL).to_s 
+        # response = is what the hash is set equal to when I use t instead of s 
+        reponse = JSON.parse(result)
+        response
     end 
     
     # def initialize(query)
