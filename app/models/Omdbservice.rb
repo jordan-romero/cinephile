@@ -20,7 +20,7 @@ class OmdbService
          
         result = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL).to_s 
         # response = is what the hash is set equal to when I use t instead of s 
-        reponse = JSON.parse(result)
+        response = JSON.parse(result)
         response
     end 
     

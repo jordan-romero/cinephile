@@ -38,12 +38,18 @@ class ReviewsController < ApplicationController
     end 
     
     def create
-        @review = Review.new(review_params)
-        @movie = @review.movie
-        if @review.save
-            redirect_to @movie
-        else  
-            render 'new'
+        if params[:movie_id] && !Movie.exists?
+            (params[:movie_id])
+            redirect_to movies_path, alert: "Movie not Found."
+         else 
+        # @review = Review.new(movie_id: params[:movie_id])
+            @review = Review.new(review_params)
+            @movie = @review.movie
+            if @review.save
+                redirect_to @movie
+            else  
+                render 'new'
+            end
         end 
     end 
 
@@ -61,14 +67,15 @@ class ReviewsController < ApplicationController
         end 
     end 
 
-    def update          
+    def update   
+                
         @review.update(review_params)
         @movie = @review.movie 
-        if @review.save 
-            redirect_to movie_review_path(@movie, @review)
-        else 
-            render 'edit'
-        end 
+            if @review.save 
+                redirect_to movie_review_path(@movie, @review)
+            else 
+                render 'edit'
+            end 
     end 
 
     def destroy 

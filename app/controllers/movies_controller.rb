@@ -61,7 +61,7 @@ class MoviesController < ApplicationController
         :release_date, 
         :genre,
         :runtime, 
-        :list_name)
+        :list_id)
     end 
    
 

@@ -13,8 +13,9 @@
         
     </div>
     <div class="card-footer">
-        
-         <div>Watch List: <%= link_to @movie.list.name, list_path(@movie.list) if @movie.list %></div>
+    
+        <div>Watch List: <%= link_to @movie.lists.name, list_path(@movie.lists) if @movie.lists %></div>
+           
     </div>
   </div>
 

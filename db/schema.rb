@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_195842) do
+ActiveRecord::Schema.define(version: 2020_07_25_210311) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "movie_lists", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_movie_lists_on_list_id"
+    t.index ["movie_id"], name: "index_movie_lists_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -26,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_07_16_195842) do
     t.integer "runtime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "list_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -49,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_195842) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "movie_lists", "lists"
+  add_foreign_key "movie_lists", "movies"
   add_foreign_key "reviews", "movies"
   add_foreign_key "reviews", "users"
 end
