@@ -1,51 +1,58 @@
-<div class="card" style="display:flex">
-<div class="h3 card-header text-dark"><%= @movie.title %></div>
-    <div class="card-content">
-            <div class="card-img-top"> 
-                <img src=<%= (@movie.poster) %>>
+<div class="d-flex justify-content-around row-hl">
+    <div class="card" style="width: 25rem;" style="display:flex">
+        <img class= "card-img-top" src=<%= (@movie.poster) %>>
+            <div class="card-content text-center">
+                <div class="h5 card-title text-dark"><%= @movie.title %></div>
+                    <h6> Genre(s):<%= @movie.genre %></h6>
+                    <h6>Release Date: <%= @movie.release_date %></h6>
+                    <h6>Runtime: <%= @movie.runtime %> minutes</h6>
+                </div>
+            
+                <div class="card-footer text-muted text-center">
+
+
+                    <% if !@movie.lists.present? %>
+                        <%= form_with model: @movie, local:true do |form| %>
+                        <%= form.collection_select :list_ids, List.all, :id, :name %> 
+                        <%= form.submit "Add to List"%>
+                        <% end %>
+                    <% else %>
+
+                        <% @movie.lists.each do |list|%>
+                        <p>Watch List: <%= link_to list.name, list_path(list), class: "text-dark" %></p>
+                        <% end %>
+                    <% end %>
+
+                    <%= button_to "Delete Movie", @movie, method: :delete, class: "btn btn-outline-danger" %><br>
+                </div>
             </div>
-            <h5> Genre(s):<%= @movie.genre %></h5>
-            <h6>Release Date: <%= @movie.release_date %></h6>
-            <h6>Runtime: <%= @movie.runtime %> minutes</h6>
-            <p>  View Movie Reviews: <%= link_to @movie.reviews.count, movie_reviews_path(@movie) %> </p>
-           
-            <h6> Review <%= link_to @movie.title, new_movie_review_path(@movie)%>  </h6>
-        
-    </div>
-    <div class="card-footer">
-
-
-        <% if !@movie.lists.present? %>
-        <%= form_with model: @movie, local:true do |form| %>
-        <%= form.collection_select :list_ids, List.all, :id, :name %> 
-        <%= form.submit "Add to List"%>
-        <% end %>
-        <% else %>
-
-        <% @movie.lists.each do |list|%>
-        <p>Watch List: <%= link_to list.name, list_path(list) %></p>
-        <% end %>
-        <% end %>
-        
-        
-                
-
     
-  </div>
+ 
 
+  <div class="p-4 item-hl">
+        <%if !@movie.reviews.present? %>
+             <p> Be the first to review this film! </p>
+        <%else%> 
+
+            <div class="card mb-4" style="width: 25rem;" style="display:flex"> 
+                    <p class="card-header">All Reviews: <%=link_to @movie.reviews.count, movie_reviews_path(@movie) %></p>
+                    <div class= "card-body text-center">
+                        <h6 class= "card-title">Movie Reviews for <%= @movie.title %></h6>
+                        <ul class= "list-unstyled">
+                            <% @movie.reviews.each do |review|%>
+                            <li><%= stars(review.rating) %> <br> <%= review.content%></li>
+                            <% end %>
+                    </div>
+            </div>
+        <% end %>  
+
+ 
+        
+    <div class= "font-weight-bold text-dark h5 text-center"> Review <%= link_to @movie.title, new_movie_review_path(@movie)%>  </div>
+        
+ </div>
   
-
-
-
-
-
-
-
-
-  <div><%= link_to "edit movie", edit_movie_path(@movie) %></div>
-  <%= button_to "delete movie", @movie, method: :delete %><br>
-
 
   <%= link_to "View all Movies", movies_path%>
   
-      
+  
