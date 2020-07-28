@@ -2,8 +2,12 @@ class MoviesController < ApplicationController
     before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
     def index 
-        @api_movie = OmdbService.search(params[:search])
-        @movies = Movie.all 
+        @search = params[:search]
+        if @search
+            @movie = Movie.find_or_create_from_api(params[:search])
+        else 
+            @movies = Movie.all 
+        end 
     end 
 
 
@@ -12,8 +16,8 @@ class MoviesController < ApplicationController
         
     end 
 
-    def create 
-        @movie = Movie.new(movie_params)  
+    def create
+        @movie = Movie.find_or_create_from_api(movie_params)
         if @movie.save
             redirect_to @movie
         else
@@ -60,8 +64,9 @@ class MoviesController < ApplicationController
         params.require(:movie).permit(:title, 
         :release_date, 
         :genre,
-        :runtime, 
-        :list_id)
+        :runtime,
+        :poster, 
+        :list_ids)
     end 
    
 

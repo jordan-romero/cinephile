@@ -1,7 +1,9 @@
-BASE_URL = "http://www.omdbapi.com/?s="  # using t eliminates the double hash and searches by title but only gives me the first one 
+BASE_URL = "http://www.omdbapi.com/?t="  # using t eliminates the double hash and searches by title but only gives me the first one 
 API_PARTIAL_URL = "&apikey=#{ENV['OMDB_API_KEY']}" 
 
 class OmdbService 
+
+    attr_reader :results
 
 #     require "uri"
 # require "net/http"
@@ -16,27 +18,17 @@ class OmdbService
 # puts response.read_body
     
 
-     def self.search(search)
+    def self.search(search)
          
-        result = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL).to_s 
+        @results = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL)
         # response = is what the hash is set equal to when I use t instead of s 
-        response = JSON.parse(result)
-        response
+        @results
     end 
     
     # def initialize(query)
     #     @search = "#{query}"
     # end 
-    # def self.search(movie)
-    #     search["Search"].each{|movie| movie.create_movie_from_api(movie)}
-    # end 
-
-    # def self.create_movie_from_api(search)
-        
-    #     create(title: search:["Title"]
-    #            runtime: search:["Runtime"] )
-    # end 
+  
 
 end 
 
-##p.each do |movie| movie.each do |title, value| puts "#{value}" end end 

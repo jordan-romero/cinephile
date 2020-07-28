@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create, :update, :destroy]
   root to: 'pages#home'
 
-  get "/search", to: "movies#index"
+  get "/search", to: "movies#new"
 
-  #post "/search" => "Omdbservice#search", as: :search
+ 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

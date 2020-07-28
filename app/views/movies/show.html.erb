@@ -4,6 +4,9 @@
 
     <div class="card-content">
         <h4 style="margin: 0 0 20px 0"><%= @movie.title %></h4>
+            <div class="card-img-top"> 
+                <img src=<%= (@movie.poster) %>>
+            </div>
             <h5> Genre(s):<%= @movie.genre %></h5>
             <h6>Release Date: <%= @movie.release_date %></h6>
             <h6>Runtime: <%= @movie.runtime %> minutes</h6>
@@ -13,10 +16,22 @@
         
     </div>
     <div class="card-footer">
+
+
+        
+        <%= form_with model: @movie, local:true do |form| %>
+        <%= form.collection_select :list_ids, List.all, :id, :name %> 
+        <%= form.submit "Add to List"%>
+        <% end %>
+
+        <% @movie.lists.each do |list|%>
+        <p>Watch List: <%= link_to list.name, list_path(list) %></p>
+        <% end %>
+        
+        
+                
+
     
-        <div>Watch List: <%= link_to @movie.lists.name, list_path(@movie.lists) if @movie.lists %></div>
-           
-    </div>
   </div>
 
   
