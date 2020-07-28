@@ -1,9 +1,6 @@
-<h1>I am the show page </h1>
-
 <div class="card" style="display:flex">
-
+<div class="h3 card-header text-dark"><%= @movie.title %></div>
     <div class="card-content">
-        <h4 style="margin: 0 0 20px 0"><%= @movie.title %></h4>
             <div class="card-img-top"> 
                 <img src=<%= (@movie.poster) %>>
             </div>
@@ -18,14 +15,16 @@
     <div class="card-footer">
 
 
-        
+        <% if !@movie.lists.present? %>
         <%= form_with model: @movie, local:true do |form| %>
         <%= form.collection_select :list_ids, List.all, :id, :name %> 
         <%= form.submit "Add to List"%>
         <% end %>
+        <% else %>
 
         <% @movie.lists.each do |list|%>
         <p>Watch List: <%= link_to list.name, list_path(list) %></p>
+        <% end %>
         <% end %>
         
         

@@ -24,7 +24,7 @@
     <tbody>
         <tr>
             <td class="text-dark" ><%= link_to @movie.title, movie_path(@movie), class: 'text-dark' %></td>
-            <td><%= @movie.release_date %></td>
+            <td><%= date_format(@movie.release_date) %></td>
             <td><%= @movie.runtime %> minutes</td>
             <td><%= button_to "Delete", @movie, method: :delete %></td>
             </tr>
@@ -45,9 +45,8 @@
         <tbody>
             <tr>
                 <td><%= link_to (movie.title), movie_path(movie) %></td>
-                <td><%= movie.release_date %></td>
+                <td><%= date_format(movie.release_date) %></td>
                 <td><%= movie.runtime %> minutes</td>
-                <td>
             </tr>
         </tbody>
     <% end %>
@@ -59,4 +58,3 @@
 
 
 
-<%= link_to "Add a Movie to your Collection", new_movie_path%>
