@@ -24,7 +24,11 @@ class Movie < ApplicationRecord
         runtime: movie["Runtime"], 
         genre: movie["Genre"], 
         release_date: movie["Released"],
-        poster: movie["Poster"]) 
+        poster: movie["Poster"],
+        actors: movie["Actors"],
+        plot: movie["Plot"],
+        imdbRating: movie["imdbRating"],
+        director: movie["Director"]) 
 
     end 
 

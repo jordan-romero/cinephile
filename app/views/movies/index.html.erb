@@ -12,7 +12,7 @@
 
 
 <% if @search %>
-<table class="table table-hover" style="margin: 2em 0 0 0">
+<table class="table table-hover" >
     <thead class="thead-dark">
         <tr>
             <th>Movie Title</th>
@@ -23,7 +23,7 @@
     </thead>
     <tbody>
         <tr>
-            <td class="text-dark" ><%= link_to @movie.title, movie_path(@movie), class: 'text-dark' %></td>
+            <td><%= link_to @movie.title, movie_path(@movie), class: 'text-dark' %></td>
             <td><%= date_format(@movie.release_date) %></td>
             <td><%= @movie.runtime %> minutes</td>
             <td><%= button_to "Delete", @movie, method: :delete %></td>
@@ -32,7 +32,7 @@
 </table>
     
 <% else %>
- <table class="table table-hover" style="margin: 2em 0 0 0">
+ <table class="table table-hover" >
     <thead class="thead-dark">
         <tr>
             <th>Movie Title</th>
@@ -44,7 +44,7 @@
     <% @movies.each do |movie| %>
         <tbody>
             <tr>
-                <td><%= link_to (movie.title), movie_path(movie) %></td>
+                <td><%= link_to (movie.title), movie_path(movie), class: 'text-dark' %></td>
                 <td><%= date_format(movie.release_date) %></td>
                 <td><%= movie.runtime %> minutes</td>
             </tr>

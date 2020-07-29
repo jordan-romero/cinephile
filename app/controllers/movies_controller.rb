@@ -65,7 +65,11 @@ class MoviesController < ApplicationController
         :release_date, 
         :genre,
         :runtime,
-        :poster, 
+        :poster,
+        :actors,
+        :plot,
+        :imdbRating,
+        :director, 
         :list_ids)
     end 
    

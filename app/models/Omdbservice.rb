@@ -8,7 +8,6 @@ class OmdbService
     
 
     def self.search(search)
-         
         @results = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL)
         # response = is what the hash is set equal to when I use t instead of s 
         @results
