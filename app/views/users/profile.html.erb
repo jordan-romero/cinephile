@@ -1,0 +1,10 @@
+<h1>Welcome to Cinephile!</h1>
+<% if logged_in? %>
+    <h1>You are Logged In, <%= current_user.username %></h1>
+<%end%>
+
+<h2><%= link_to "View your Lists", lists_path %></h2><br>
+<h2><%= link_to "View your Movies", movies_path %></h2>
+
+<%= button_to "Login", '/login', method: :get%>
+<%= button_to "Sign Up", '/users/new', method: :get%>

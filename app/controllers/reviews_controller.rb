@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [:show, :edit, :update, :destroy]
     
+    
     def index
         if params[:movie_id]
             @movie = Movie.find_by(id: params[:movie_id])
@@ -38,19 +39,13 @@ class ReviewsController < ApplicationController
     end 
     
     def create
-        if params[:movie_id] && !Movie.exists?
-            (params[:movie_id])
-            redirect_to movies_path, alert: "Movie not Found."
-         else 
-        # @review = Review.new(movie_id: params[:movie_id])
-            @review = Review.new(review_params)
-            @movie = @review.movie
-            if @review.save
-                redirect_to @movie
-            else  
-                render 'new'
-            end
-        end 
+        @movie = Movie.find(params[:review][:movie_id])
+        @review = current_user.reviews.new(review_params)
+        if @review.save
+          redirect_to movie_reviews_path(@movie)
+        else
+          render :new
+        end
     end 
 
     def edit 
@@ -60,6 +55,7 @@ class ReviewsController < ApplicationController
                 redirect_to movies_path, alert: "Movie not Found."
             else
                 @review = movie.reviews.find_by(id: params[:id])
+                authorize(@review)
                 redirect_to reviews_path, alert: "Review not Found." if @review.nil? 
             end 
         else 
@@ -81,9 +77,14 @@ class ReviewsController < ApplicationController
     def destroy 
         @review.destroy(review_params)
         @movie = @review.movie 
-        redirect_to reviews_path
-    end 
-
+        if current_user.id == review.user_id
+            review.destroy
+        else
+            flash[:notice] = "You can't delete that user's review!"
+        end
+            redirect_to movie_reviews_path(@movie)
+    end
+        
     private 
 
     def set_review

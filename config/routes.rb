@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
-  resources :users
+  root "pages#home"
+  resources :users, only: [:new, :create]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  
+  get '/profile', to: 'users#profile', as: :profile 
+
   resources :lists
+
   resources :movies do 
     resources :reviews
   end 
+
   resources :reviews, only: [:create, :update, :destroy]
-  root to: 'pages#home'
 
-  get "/search", to: "movies#new"
 
+
+  
  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
