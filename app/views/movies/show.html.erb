@@ -16,7 +16,7 @@
 
                     <% if !@movie.lists.present? %>
                         <%= form_with model: @movie, local:true do |form| %>
-                        <%= form.collection_select :list_ids, List.all, :id, :name %> 
+                        <%= form.collection_select :list_ids, current_user.lists, :id, :name %> 
                         <%= form.submit "Add to List"%>
                         <% end %>
                     <% else %>
@@ -43,7 +43,7 @@
                         <h6 class= "card-title">Movie Reviews for <%= @movie.title %></h6>
                         <ul class= "list-unstyled">
                             <% @movie.reviews.each do |review|%>
-                            <li><%= stars(review.rating) %> <br> <%= review.content%><br>Reviewed By: <%= review.user.name %></li>
+                            <li><%= stars(review.rating) %> <br> <%= review.content%><br>Reviewed By: <%= review.user.username %></li>
                             <% end %>
                     </div>
                 <div class= "card-footer text-center">
