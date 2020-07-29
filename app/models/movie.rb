@@ -7,7 +7,13 @@ class Movie < ApplicationRecord
     has_many :users, through: :reviews
 
     validates :title, presence: true 
+
+    scope :ordered_by_title, -> { order(title: :asc) }
    
+
+    def self.ordered_by_title 
+        self.order(title: :asc)
+    end
     
     # def reject_reviews(attributes)
     #     attributes['rating', 'content'].blank?
