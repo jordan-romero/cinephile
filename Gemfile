@@ -60,3 +60,5 @@ gem "httparty", "~> 0.18.1"
 gem "json", "~> 2.3"
 
 
+
+gem "bcrypt", "~> 3.1"

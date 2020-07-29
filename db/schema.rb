@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_232929) do
+ActiveRecord::Schema.define(version: 2020_07_29_183554) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "movie_lists", force: :cascade do |t|
@@ -56,12 +58,13 @@ ActiveRecord::Schema.define(version: 2020_07_28_232929) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "password"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
+  add_foreign_key "lists", "users"
   add_foreign_key "movie_lists", "lists"
   add_foreign_key "movie_lists", "movies"
   add_foreign_key "reviews", "movies"
