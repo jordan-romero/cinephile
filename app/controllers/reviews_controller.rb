@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
         @review = current_user.reviews.new(review_params)
         if @review.save
           redirect_to movie_reviews_path(@movie)
-        else
+        else 
           render :new
         end
     end 
@@ -70,6 +70,7 @@ class ReviewsController < ApplicationController
             if @review.save 
                 redirect_to movie_review_path(@movie, @review)
             else 
+    
                 render 'edit'
             end 
     end 

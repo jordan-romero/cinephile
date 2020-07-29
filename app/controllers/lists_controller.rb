@@ -2,10 +2,11 @@ class ListsController < ApplicationController
     before_action :set_list, only: [:show, :edit, :update, :destroy]
 
     def index
-        @lists = List.all 
+        @lists = current_user.lists.all
     end 
 
     def show 
+        authorize(@list)
     end 
 
     def new 
@@ -13,7 +14,7 @@ class ListsController < ApplicationController
     end 
 
     def create
-        @list = List.new(list_params)
+        @list = current_user.lists.new(list_params)
         if @list.save
             redirect_to @list
         else 
@@ -22,9 +23,11 @@ class ListsController < ApplicationController
     end 
 
     def edit 
+        authorize(@list)
     end 
 
     def update
+        authorize(@list)
         @list.update(list_params)
         if @list.save
             redirect_to @list 
