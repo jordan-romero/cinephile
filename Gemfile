@@ -62,3 +62,7 @@ gem "json", "~> 2.3"
 
 
 gem "bcrypt", "~> 3.1"
+
+gem "omniauth-google-oauth2", "~> 0.8.0"
+
+gem "omniauth", "~> 1.9"

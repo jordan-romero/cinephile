@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end 
 
   resources :reviews, only: [:create, :update, :destroy]
+  
+  get 'auth/:provider/callback', to: 'sessions#g_create'
+  get 'auth/failure', to: redirect('/')
 
 
 

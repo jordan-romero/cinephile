@@ -40,7 +40,7 @@
                     
                     <%= text_field_tag :search, nil, placeholder: 'Search by Title' %>
                     <%= submit_tag ("Search"), class: 'btn btn-light ml-3' %>
-                    </div>
+                  </div>
                   <% end %>
               </div>
               <ul class= "navbar-nav nav-fill">
@@ -69,7 +69,10 @@
                   <li class="nav-item pr-5 pl-5">
                     <%= button_to "Sign Up", '/users/new', method: :get, class: 'btn btn-outline-warning'%>
                   </li>
-              </ul>
+                  <li class="nav-item pr-5 pl-5">
+                    <%= link_to('Log in with Google!', '/auth/google_oauth2') %>
+                  </li>
+              </ul> 
               </div>
           </div>
     </nav>

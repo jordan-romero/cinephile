@@ -14,7 +14,7 @@
                 <div class="card-footer text-muted text-center">
 
 
-                    <% if !@movie.lists.present?  && @movie.list.user == !current_user %>
+                    <% if !@movie.lists.present? %>
 
                         <%= form_with model: @movie, local:true do |form| %>
                         <%= form.collection_select :list_ids, current_user.lists, :id, :name %> 
