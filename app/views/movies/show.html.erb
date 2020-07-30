@@ -14,7 +14,8 @@
                 <div class="card-footer text-muted text-center">
 
 
-                    <% if !@movie.lists.present? %>
+                    <% if !@movie.lists.present?  && @movie.list.user == !current_user %>
+
                         <%= form_with model: @movie, local:true do |form| %>
                         <%= form.collection_select :list_ids, current_user.lists, :id, :name %> 
                         <%= form.submit "Add to List"%>
@@ -22,8 +23,10 @@
                     <% else %>
 
                         <% @movie.lists.each do |list|%>
+                    
                         <p>Watch List: <%= link_to list.name, list_path(list), class: "text-dark" %></p>
                         <% end %>
+                       
                     <% end %>
 
                     <%= button_to "Delete Movie", @movie, method: :delete, class: "btn btn-outline-danger" %><br>

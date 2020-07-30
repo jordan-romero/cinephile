@@ -11,6 +11,70 @@
   </head>
 
   <body>
+  <% if logged_in? %>
+  <nav class="navbar navbar-expand-sm nav-fill navbar-light bg-dark">
+        <div class="container "> 
+            <a class="navbar-brand text-warning" href="#">Cinephile</a>
+              <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarnav">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarnav">
+              <ul class="navbar-nav nav-fill">
+                  <li class="nav-item pr-4">
+                    <%= link_to "Home", root_path, class: 'text-light nav-link'%>
+                  </li>
+                  <li class="nav-item pr-4">
+                    <%= link_to "All Movies", movies_path, class: 'text-light nav-link'%>
+                  </li>
+                  <li class="nav-item pr-4">
+                    <%=link_to "Create a Watch List", new_list_path(@list), class: "text-light nav-link" %> 
+                  </li>
+                  <li class="nav-item pr-4">
+                    <%= link_to "All Lists", lists_path, class: 'text-light nav-link'%>
+                  </li>
+              </ul>
+              <div class="pt-3 text-info form-inline ml-auto"> 
+                  <%= form_tag(movies_path, method: :get) do %>
+
+                  <div class= "form-inline pb-3">
+                    
+                    <%= text_field_tag :search, nil, placeholder: 'Search by Title' %>
+                    <%= submit_tag ("Search"), class: 'btn btn-light ml-3' %>
+                    </div>
+                  <% end %>
+              </div>
+              <ul class= "navbar-nav nav-fill">
+              <li class="nav-item pl-4">
+                    <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-outline-warning" %>
+              </li>
+              </ul>
+          </div>
+        </div>
+    </nav>
+  <% else %>
+  <nav class="navbar navbar-expand-sm nav-fill navbar-light bg-dark ">
+        <div class="container "> 
+            <a class="navbar-brand text-warning" href="#">Cinephile</a>
+              <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarnav">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarnav">
+              <ul class="nav nav-pills nav-fill">
+                  <li class="nav-item pr-4 pl-4">
+                    <%= link_to "Home", root_path, class: 'text-light nav-link'%>
+                  </li>
+                  <li class="nav-item pr-4 pl-4">
+                    <%= link_to "Log In", login_path, class: 'text-light nav-link' %>
+                  </li>
+                  <li class="nav-item pr-5 pl-5">
+                    <%= button_to "Sign Up", '/users/new', method: :get, class: 'btn btn-outline-warning'%>
+                  </li>
+              </ul>
+              </div>
+          </div>
+    </nav>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
