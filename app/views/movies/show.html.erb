@@ -16,7 +16,7 @@
 
                   
                         <%= form_with model: @movie, local:true do |form| %>
-                        <%= form.collection_select :list_ids, current_user.lists, :id, :name %> 
+                        <%= form.collection_select :list_ids, current_user.lists, :id, :name, :include_hidden => false  %> 
                         <%= form.submit "Add to List"%>
                         <% end %>
                     

@@ -3,6 +3,25 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
     helper_method :owns_resource?
 
+    rescue_from Errors::AuthorizationError, :with => :rescue403
+    rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
+    rescue_from ActionController::InvalidAuthenticityToken, :with => :rescue403
+    
+
+    def routing_error(error = 'Routing error', status = :not_found, exception=nil)
+        render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    end
+    
+    private 
+
+    def rescue404
+        render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    end
+
+    def rescue403
+        render file: "#{Rails.root}/public/403.html", layout: false, status: 403
+    end
+
     def current_user    
         User.find_by(id: session[:user_id])  
     end
@@ -24,7 +43,7 @@ class ApplicationController < ActionController::Base
     end 
 
     def authorize(resource)
-        redirect_to '/profile' if !owns_resource?(resource)
+        raise Errors::AuthorizationError.new if !owns_resource?(resource)
     end
 end
 

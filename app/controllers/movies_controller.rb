@@ -19,9 +19,10 @@ class MoviesController < ApplicationController
 
     def create
         @movie = Movie.find_or_create_from_api(movie_params)
-        if @movie.save
+        if @movie.save 
             redirect_to @movie
         else
+            @errors = @movie.errors.full_messages
             render "new"
         end
     end
@@ -32,8 +33,13 @@ class MoviesController < ApplicationController
     def update
         @movie.update(movie_params)
         if @movie.save
+            if list = List.find(params[:movie][:list_ids])
+                @movie.lists << list
+            end 
+            flash[:success] = "Your movie was successfully updated."
             redirect_to @movie 
         else 
+            @errors = @movie.errors.full_messages
             render 'edit'
         end 
     end 
@@ -70,8 +76,7 @@ class MoviesController < ApplicationController
         :actors,
         :plot,
         :imdbRating,
-        :director, 
-        :list_ids)
+        :director)
     end 
    
 

@@ -2,6 +2,8 @@ class ListsController < ApplicationController
     before_action :authenticate
     before_action :set_list, only: [:show, :edit, :update, :destroy]
 
+    
+
     def index
         @lists = current_user.lists.all
     end 
@@ -53,6 +55,6 @@ class ListsController < ApplicationController
     end 
     
     def list_params
-        params.require(:list).permit(:name, :description, :movie_ids [])
+        params.require(:list).permit(:name, :description, :movie_ids)
     end 
 end

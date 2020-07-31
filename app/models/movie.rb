@@ -20,7 +20,6 @@ class Movie < ApplicationRecord
     end
 
     
-    
     # def reject_reviews(attributes)
     #     attributes['rating', 'content'].blank?
     # end
