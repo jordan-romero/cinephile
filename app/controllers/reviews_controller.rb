@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :authenticate
     before_action :set_review, only: [:show, :edit, :update, :destroy]
     
     
