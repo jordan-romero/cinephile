@@ -14,6 +14,12 @@ class Movie < ApplicationRecord
     def self.ordered_by_title 
         self.order(title: :asc)
     end
+
+    def can_delete?
+        self.reviews.empty? && self.lists.empty?
+    end
+
+    
     
     # def reject_reviews(attributes)
     #     attributes['rating', 'content'].blank?

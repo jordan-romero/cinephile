@@ -1,17 +1,5 @@
 <h1 class="pt-3 display-4 text-center bg-light text-dark">Your Movie Collection</h1>
 
-
-<%= form_tag(movies_path, method: :get) do %>
-
-    <div class= "form-inline pb-3 justify-content-center">
-        <span class="font-weight-bold, text-capitalize pr-3"><%= label_tag "Search and Add to Collection:"%></span>
-        <%= text_field_tag :search, nil, placeholder: 'Search By Title', class: "form-control" %>
-        <%= submit_tag ("Search"), class: 'btn btn-outline-dark ml-3' %>
-    </div>
-<% end %>
-
-
-
 <% if @search %>
 <table class="table table-hover" >
     <thead class="thead-dark">
@@ -19,7 +7,9 @@
             <th>Movie Title</th>
             <th>Release Date</th>
             <th>Runtime </th>
+            <% if @movie.can_delete? %>
             <th>Not the one you wanted?</th>
+            <% end %>
         </tr>
     </thead>
     <tbody>
@@ -27,7 +17,9 @@
             <td><%= link_to @movie.title, movie_path(@movie), class: 'text-dark' %></td>
             <td><%= date_format(@movie.release_date) %></td>
             <td><%= @movie.runtime %> minutes</td>
+            <% if @movie.can_delete? %>
             <td><%= button_to "Delete", @movie, method: :delete %></td>
+            <% end %>
             </tr>
     </tbody>
 </table>
