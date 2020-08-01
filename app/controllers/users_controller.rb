@@ -11,6 +11,7 @@ class UsersController < ApplicationController
           log_in(@user)
           redirect_to profile_path
         else
+          flash[:errors] = user.errors.full_messages
           render :new
         end
       end

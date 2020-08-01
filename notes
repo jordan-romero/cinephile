@@ -1,0 +1,48 @@
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Review <%= @movie.title %></button>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" style="width :30em;">
+            <%= form_with model: @review do |form| %>
+            <div class="form-group" style="width :30em;">
+            <%= form.hidden_field :movie_id %>
+            <%= form.label :rating %>
+            <%= form.number_field :rating, in: 1..10, class: "form-control" %>
+         </div>
+         <div  class="form-group" style="width :30em;">
+            <%= form.label :content %>
+            <%= form.text_area :content, class: "form-control" %>
+         </div>
+   
+            <span><%= form.submit value="Submit", class: "btn btn-outline-dark" %> </span>  
+        <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal();
+  });
+});
+</script>
+
+  
+  
+  
