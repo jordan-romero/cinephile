@@ -2,12 +2,12 @@
 
 <div class="d-flex justify-content-center">
 <div class="card mb-4 border-dark" style="width: 25rem;" style="display:flex"> 
-     <p class="card-header text-center"><%= stars(@review.rating) %></p>
+     <p class="card-header text-center bg-dark"><%= stars(@review.rating) %></p>
      <div class= "card-body text-center">
       <%= @review.content %> <br>
        <%= link_to "Edit Review", edit_movie_review_path(@review), class: 'btn btn-outline-dark' %> 
      </div>
-     <div class= "card-footer text-center">
+     <div class= "card-footer text-center bg-dark text-warning">
                     <div> Reviewed by: <%= @review.user.username %></div>
      </div>
 </div>
