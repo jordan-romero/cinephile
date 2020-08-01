@@ -13,8 +13,8 @@
   </div>
 <% end %>
 
-<div class= "card">
-<div class="form-group" style="width :50em;">
+<div class="row justify-content-center">
+  <div class="form-group" style="width :50em;">
     <%= form_with model: @list, local:true do |form| %>
     
     <div class= "text-weight-bold text-dark"><%= form.label :name %></div>
@@ -23,9 +23,9 @@
    <div class="form-group" style="width :50em;">
         <%= form.label :description %> 
         <%= form.text_area :description, class: "form-control" %>
+    </div>
 </div>
-<div>
-    <span><%= form.submit value="Submit", class: "btn btn-outline-dark" %> </span>   
+    <div class="row justify-content-center"><%= form.submit value="Submit", class: "btn btn-outline-dark" %> </div>   
 
-
+</div>
  <% end %>
