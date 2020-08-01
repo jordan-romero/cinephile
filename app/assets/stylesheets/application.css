@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ .carousel img {
+    max-width: 525px;
+    max-height: 650px;
+    margin: 0 auto;
+}
+
+.carousel-inner {
+    background-color: rgb(20, 20, 4) !important;
+    }
+
