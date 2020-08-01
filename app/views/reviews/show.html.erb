@@ -1,11 +1,16 @@
-<h1>I am the review show</h1>
-<h2><%= @review.movie.title %></h2>
-<%= @review.rating %><br>
+<h1 class= "display-4 text-dark text-center"><%= @review.user.username %>'s Review for <%= link_to @review.movie.title, movie_path(@movie), class: 'text-warning' %> </h1>
 
-<%= @review.content %>
-<p><%= link_to "Edit Review", edit_movie_review_path(@movie, @review) if @review.movie %></p>
-</li>
-
-</ul>
-
+<div class="d-flex justify-content-center">
+<div class="card mb-4 border-dark" style="width: 25rem;" style="display:flex"> 
+     <p class="card-header text-center"><%= stars(@review.rating) %></p>
+     <div class= "card-body text-center">
+      <%= @review.content %> <br>
+       <%= link_to "Edit Review", edit_movie_review_path(@review), class: 'btn btn-outline-dark' %> 
+     </div>
+     <div class= "card-footer text-center">
+                    <div> Reviewed by: <%= @review.user.username %></div>
+     </div>
+</div>
+</div>
+<p> <%=link_to "View all Reviews", movie_reviews_path(@movie), class: "btn btn-warning btn-lg mx-auto d-block"%></p>
 

@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
         @movie = Movie.find(params[:review][:movie_id])
         @review = current_user.reviews.new(review_params)
         if @review.save
-          redirect_to movie_reviews_path(@movie)
+          redirect_to movie_path(@movie)
         else 
           render :new
         end

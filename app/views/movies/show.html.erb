@@ -44,20 +44,21 @@
                     <div class= "card-body text-center">
                         <h6 class= "card-title">Movie Reviews for <%= @movie.title %></h6>
                         <ul class= "list-unstyled">
-                            <% @movie.reviews.each do |review|%>
+                            <% @movie.reviews.each do |review|%>                            
                             <li><%= stars(review.rating) %> <br> <%= review.content%><br>Reviewed By: <%= review.user.username %></li>
+                
                             <% end %>
                     </div>
                 <div class= "card-footer text-center">
-                    <div> <%=link_to "View all Reviews", movie_reviews_path(@movie)%></div>
+                    <div> <%=link_to "View all Reviews", movie_reviews_path(@movie), class: 'text-dark'%></div>
                 </div>
             </div>
         <% end %>  
 
  
         
-    <div class= "font-weight-bold text-dark h5 text-center pb-3"> Review <%= link_to @movie.title, new_movie_review_path(@movie)%>  </div>
-    <div class= "font-weight-bold text-dark h5 text-center pb-3"><%= link_to "View all Movies", movies_path%></div>
+    <div class= "font-weight-bold text-dark h5 text-center pb-3"> Review <%= link_to @movie.title, new_movie_review_path(@movie), class: 'text-warning'%>  </div>
+
         
  </div>
 

@@ -1,13 +1,27 @@
-<h1>Reviews for: <%= link_to @movie.title, movie_path(@movie)%></h1>
-<ul class="list-unstyled">
+<h1 class= "display-4 text-dark text-center">Reviews for: <%= link_to @movie.title, movie_path(@movie), class: 'text-warning'%></h1>
+
 <% @movie.reviews.each do |review| %>
-        
-     <li> <%= link_to review.rating, movie_review_path(@movie, review) %> - <%= review.content %> reviewed by: <%= review.user.username%></li>
-     
+<div class="d-flex justify-content-center flex-wrap row-hl">
+<div class="p-4 item-hl">
+<div class="row">
+<div class="card-deck">
+<div class="card mb-4 border-dark" style="width: 25rem;" style="display:flex"> 
+     <p class="card-header text-center"><%= stars(review.rating) %></p>
+     <div class= "card-body text-center">
+      <%= review.content %> <br>
+       <%= link_to "Edit Review", edit_movie_review_path(@movie, review), class: 'btn btn-outline-dark' %> 
+     </div>
+     <div class= "card-footer text-center">
+                    <div> Reviewed by: <%= review.user.username %></div>
+     </div>
+</div>
+</div>
+</div>
+</div>
 <% end %>
 
  
-</ul>
+
 
 
 

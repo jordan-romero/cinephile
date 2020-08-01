@@ -1,12 +1,13 @@
-<h1>I am the List Index</h1>
+<h1 class='display-4 text-dark text-center'><%= current_user.username %>'s Lists</h1>
 
-
+<ul class="list-unstyled text-center">
 <% @lists.each do |list| %>
-
-<%= link_to list.name, list_path(list) %><br>
-
+<li class= 'text-dark pb-2'>
+<%= link_to list.name, list_path(list), class: 'text-dark' %><br>
+</li>
 <% end %>
+</ul>
 
 
-<%= link_to "Make a New list", new_list_path%>
+<p class='text-center'><%= link_to "Make a New list", new_list_path, class: 'btn btn-outline-dark '%></p>
 
