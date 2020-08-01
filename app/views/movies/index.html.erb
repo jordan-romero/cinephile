@@ -4,9 +4,9 @@
 <table class="table table-hover" >
     <thead class="thead-dark">
         <tr>
-            <th>Movie Title</th>
-            <th>Release Date</th>
-            <th>Runtime </th>
+            <th class="pl-5">Movie Title</th>
+            <th class="pr-5">Release Date</th>
+            <th class="pl-5 ">Runtime </th>
             <% if @movie.can_delete? %>
             <th>Not the one you wanted?</th>
             <% end %>
@@ -14,11 +14,11 @@
     </thead>
     <tbody>
         <tr>
-            <td><%= link_to @movie.title, movie_path(@movie), class: 'text-dark' %></td>
-            <td><%= date_format(@movie.release_date) %></td>
-            <td><%= @movie.runtime %> minutes</td>
+            <td class="pl-5"><%= link_to @movie.title, movie_path(@movie), class: 'text-dark' %></td>
+            <td class="pr-5"><%= date_format(@movie.release_date) %></td>
+            <td class="pl-5 "><%= @movie.runtime %> minutes</td>
             <% if @movie.can_delete? %>
-            <td><%= button_to "Delete", @movie, method: :delete %></td>
+            <td><%= button_to "Delete", @movie, method: :delete, class: 'btn btn-outline-danger ml-5' %></td>
             <% end %>
             </tr>
     </tbody>
@@ -28,18 +28,17 @@
  <table class="table table-hover" >
     <thead class="thead-dark">
         <tr>
-            <th>Movie Title</th>
-            <th>Release Date</th>
-            <th>Runtime </th>
-            <th></th>
+            <th class="pl-5">Movie Title</th>
+            <th class="pr-5">Release Date</th>
+            <th class="pl-5 ">Runtime </th>
         </tr>
     </thead>
     <% @movies.ordered_by_title.each do |movie| %>
         <tbody>
             <tr>
-                <td><%= link_to (movie.title), movie_path(movie), class: 'text-dark' %></td>
-                <td><%= date_format(movie.release_date) %></td>
-                <td><%= movie.runtime %> minutes</td>
+                <td class="pl-5"><%= link_to (movie.title), movie_path(movie), class: 'text-dark' %></td>
+                <td class="pr-5"><%= date_format(movie.release_date) %></td>
+                <td class="pl-5 "><%= movie.runtime %> minutes</td>
             </tr>
         </tbody>
     <% end %>

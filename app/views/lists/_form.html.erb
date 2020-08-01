@@ -17,11 +17,11 @@
   <div class="form-group" style="width :50em;">
     <%= form_with model: @list, local:true do |form| %>
     
-    <div class= "text-weight-bold text-dark"><%= form.label :name %></div>
+    <div class= "text-weight-bold text-dark text-center"><%= form.label :name %></div>
     <span> <%= form.text_field :name, class: "form-control" %> </span>
   </div>  
    <div class="form-group" style="width :50em;">
-        <%= form.label :description %> 
+        <p class= 'text-center'><%= form.label :description %> </p>
         <%= form.text_area :description, class: "form-control" %>
     </div>
 </div>

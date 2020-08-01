@@ -1,8 +1,8 @@
 module MoviesHelper
 
     def date_format(release_date)
-        if !@release_date.nil?
-         release_date.strftime("%m/%d/%Y")
+        if !release_date.nil?
+            release_date.strftime("%m/%d/%Y")
         end 
     end 
 
