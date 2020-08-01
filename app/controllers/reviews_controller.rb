@@ -77,8 +77,9 @@ class ReviewsController < ApplicationController
     end 
 
     def destroy 
-        @review.destroy(review_params)
-        @movie = @review.movie 
+        @movie = Movie.find(params[:movie_id])
+        review = Review.find(params[:id])
+        authorize(review)
         if current_user.id == review.user_id
             review.destroy
         else
