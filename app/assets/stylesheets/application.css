@@ -17,11 +17,7 @@
  .carousel img {
     min-height: 600px;
     max-height: 600px;
-    
     margin: 0 auto;
 }
 
-.carousel-inner {
-    background-color: rgb(20, 20, 4) !important;
-    }
 
