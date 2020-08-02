@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :reviews
   end 
 
-  resources :reviews, only: [:create, :update, :destroy]
+  resources :reviews, only: [:create, :update]
   
   get 'auth/:provider/callback', to: 'sessions#g_create'
   get 'auth/failure', to: redirect('/')

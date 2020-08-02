@@ -3,12 +3,18 @@ class Movie < ApplicationRecord
     has_many :movie_lists
     has_many :lists, through: :movie_lists
     
-    has_many :reviews, dependent: :destroy
+    has_many :reviews
     has_many :users, through: :reviews
 
     validates :title, presence: true 
 
     scope :ordered_by_title, -> { order(title: :asc) }
+
+    #scope :recent, ->(num) { order('created_at DESC').limit(num) }
+
+     #Movie.review.recent(10).each do |review| %>
+         # movie.review.rating, etc %></>
+       #end %>
    
 
     def self.ordered_by_title 
