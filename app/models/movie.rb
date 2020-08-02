@@ -10,11 +10,6 @@ class Movie < ApplicationRecord
 
     scope :ordered_by_title, -> { order(title: :asc) }
 
-    
-
-     #Movie.review.recent(10).each do |review| %>
-         # movie.review.rating, etc %></>
-       #end %>
    
 
     def self.ordered_by_title 
@@ -25,16 +20,6 @@ class Movie < ApplicationRecord
         self.reviews.empty? && self.lists.empty?
     end
 
-    
-    # def reject_reviews(attributes)
-    #     attributes['rating', 'content'].blank?
-    # end
-
-   
-    # def self.search(search)
-    #     where("name LIKE ?", "%#{search}%")
-    # end 
-    
     def self.find_or_create_from_api(search)
         movie = OmdbService.search(search)
         @movie = Movie.find_or_create_by(title: movie["Title"], 
@@ -48,13 +33,6 @@ class Movie < ApplicationRecord
         director: movie["Director"]) 
 
     end 
-
-    
-
-    #get the search term from the user
-    #pass the input into the search method 
-    #create or find an object from the api 
-    #return it 
 
     
 end
