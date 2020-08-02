@@ -10,7 +10,7 @@ class Movie < ApplicationRecord
 
     scope :ordered_by_title, -> { order(title: :asc) }
 
-    #scope :recent, ->(num) { order('created_at DESC').limit(num) }
+    
 
      #Movie.review.recent(10).each do |review| %>
          # movie.review.rating, etc %></>

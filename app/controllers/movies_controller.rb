@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
     def index 
         @search = params[:search]
         if @search
-            @movie = Movie.find_or_create_from_api(params[:search])
+            @movie = Movie.find_or_create_from_api(params[:search]) 
         else 
             @movies = Movie.all 
         end 
