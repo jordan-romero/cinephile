@@ -66,3 +66,7 @@ gem "bcrypt", "~> 3.1"
 gem "omniauth-google-oauth2", "~> 0.8.0"
 
 gem "omniauth", "~> 1.9"
+
+gem "kaminari", "~> 1.2"
+
+gem "kaminari-bootstrap", "~> 3.0"

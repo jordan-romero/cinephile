@@ -17,8 +17,14 @@
 
                   
                         <%= form_with model: @movie, local:true do |form| %>
-                        <%= form.collection_select :list_ids, current_user.lists, :id, :name, :include_hidden => false %> 
+                        <% lists = [] %>
+                        <% current_user.lists.each do |list| %>
+                        <% lists << list if !list.movies.include?(@movie) %>
+                        <% end %>
+                            <% if !lists.empty?%>
+                        <%= form.collection_select :list_ids, lists, :id, :name, :include_hidden => false %> 
                         <%= form.submit "Add to List", class: 'btn btn-warning btn-sm'%>
+                            <% end %>
                         <% end %>
                     
 

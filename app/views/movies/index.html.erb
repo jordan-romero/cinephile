@@ -33,6 +33,7 @@
             <th class="pl-5 ">Runtime </th>
         </tr>
     </thead>
+
     <% @movies.ordered_by_title.each do |movie| %>
         <tbody>
             <tr>
@@ -44,8 +45,8 @@
     <% end %>
  </table>
 <% end %>
+<%= paginate(@movies) %>
 
-<ul>
 
 
 
