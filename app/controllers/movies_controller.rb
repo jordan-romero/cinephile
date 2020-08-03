@@ -34,7 +34,11 @@ class MoviesController < ApplicationController
         @movie.update(movie_params)
         if @movie.save
             if list = List.find(params[:movie][:list_ids])
+                if !@movie.present? 
                 @movie.lists << list
+                else 
+                flash[:error] = "You already added this movie to this list!"
+                end 
             end 
             flash[:success] = "Your movie was successfully updated."
             redirect_to @movie 
