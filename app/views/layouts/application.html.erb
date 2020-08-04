@@ -19,7 +19,7 @@
   <% if logged_in? %>
   <nav class="navbar navbar-expand-lg nav-fill navbar-light bg-dark">
         <div class="container "> 
-            <a class="navbar-brand text-warning" href="#">Cinephile</a>
+            <div><%= link_to "Cinephile", root_path, class: "text-warning navbar-brand"%></div>
               <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarnav">
                 <span class="navbar-toggler-icon"></span>
               </button>
