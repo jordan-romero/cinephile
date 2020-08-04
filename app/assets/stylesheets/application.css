@@ -20,3 +20,13 @@
     margin: 0 auto;
 }
 
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff; 
+    border-color: black !important;
+}
+
+.page-link{
+    color: #fcc109 !important;
+    background-color: #343b40 !important;
+}

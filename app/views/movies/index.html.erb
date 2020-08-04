@@ -49,7 +49,9 @@
     <% end %>
  </table>
 <% end %>
-
+<% if @movies.present? %>
+<%= paginate(@movies) %>
+<% end %>
 
 
 
