@@ -1,12 +1,12 @@
-<% if @list.errors.any? %>
+<% if list.errors.any? %>
   <div id="error_explanation ">
     <h2 class="text-center text-danger">
-      <%= pluralize(@list.errors.count, "error") %>
+      <%= pluralize(list.errors.count, "error") %>
       prohibited this list from being saved:
     </h2>
  
     <ul>
-    <% @list.errors.full_messages.each do |msg| %>
+    <% list.errors.full_messages.each do |msg| %>
       <li class= "h4 list-unstyled text-center text-danger"><%= msg %></li>
     <% end %>
     </ul>
@@ -15,7 +15,7 @@
 
 <div class="row justify-content-center">
   <div class="form-group" style="width :50em;">
-    <%= form_with model: @list, local:true do |form| %>
+    <%= form_with model: list, local:true do |form| %>
     
     <div class= "text-weight-bold text-dark text-center"><%= form.label :name %></div>
     <span> <%= form.text_field :name, class: "form-control" %> </span>

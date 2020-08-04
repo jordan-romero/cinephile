@@ -1,20 +1,21 @@
-<% if @review.errors.any? %>
+<% if review.errors.any? %>
   <div id="error_explanation ">
     <h2 class="text-center text-danger">
-      <%= pluralize(@review.errors.count, "error") %>
+      <%= pluralize(review.errors.count, "error") %>
       prohibited this review from being saved:
     </h2>
  
     <ul>
-    <% @review.errors.full_messages.each do |msg| %>
+    <% review.errors.full_messages.each do |msg| %>
       <li class= "h4 list-unstyled text-center text-danger"><%= msg %></li>
     <% end %>
     </ul>
   </div>
 <% end %>
+
 <div class="row justify-content-center">
   <div class="form-group" style="width :50em;">
-    <%= form_with model: @review do |form| %>
+    <%= form_with model: review do |form| %>
      <div class="form-group" style="width :50em;">
      <%= form.hidden_field :movie_id %>
         <p class= "text-center"><%= form.label :rating%></p>

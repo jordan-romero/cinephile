@@ -1,12 +1,12 @@
-<% if @movie.errors.any? %>
+<% if movie.errors.any? %>
   <div id="error_explanation ">
     <h2 class="text-center text-danger">
-      <%= pluralize(@movie.errors.count, "error") %>
+      <%= pluralize(movie.errors.count, "error") %>
       prohibited this movie from being saved:
     </h2>
  
     <ul>
-    <% @movie.errors.full_messages.each do |msg| %>
+    <% movie.errors.full_messages.each do |msg| %>
       <li class= "h4 list-unstyled text-center text-danger"><%= msg %></li>
     <% end %>
     </ul>
@@ -17,7 +17,7 @@
 
 
 <div class="form-group" style="width :50em;">
-    <%= form_with model: @movie, local:true do |form| %>
+    <%= form_with model: movie, local:true do |form| %>
     
     <div class= "text-weight-bold text-dark"><%= form.label :title %></div>
     <span> <%= form.text_field :title, class: "form-control" %> </span>
