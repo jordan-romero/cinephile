@@ -70,3 +70,5 @@ gem "omniauth", "~> 1.9"
 gem "kaminari", "~> 1.2"
 
 gem "kaminari-bootstrap", "~> 3.0"
+
+gem "activestorage", "~> 6.0"
