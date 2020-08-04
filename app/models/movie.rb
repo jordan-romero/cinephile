@@ -10,11 +10,7 @@ class Movie < ApplicationRecord
 
     scope :ordered_by_title, -> { order(title: :asc) }
 
-   
 
-    def self.ordered_by_title 
-        self.order(title: :asc)
-    end
 
     def can_delete?
         self.reviews.empty? && self.lists.empty?

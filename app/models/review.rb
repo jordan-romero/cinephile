@@ -7,8 +7,8 @@ class Review < ApplicationRecord
 
   scope :recent, ->(num) { order('created_at DESC').limit(num) }
 
-  def recent
-    self.order(created_at: :desc)
-  end 
+  # def recent
+  #   self.order(created_at: :desc)
+  # end 
   
 end

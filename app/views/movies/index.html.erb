@@ -1,6 +1,9 @@
 <h1 class="pt-3 display-4 text-center bg-light text-dark">Cinephile Entertainment Collection</h1>
 
 <% if @search %>
+<% if !@movie.id.present? %>
+    <h3 class= "display-4 text-danger text-center">Movie not found! Try again!</h3>
+<% else %>
 <table class="table table-hover" >
     <thead class="thead-dark">
         <tr>
@@ -20,6 +23,7 @@
             <% if @movie.can_delete? %>
             <td><%= button_to "Delete", @movie, method: :delete, class: 'btn btn-outline-danger ml-5' %></td>
             <% end %>
+            <% end%>
             </tr>
     </tbody>
 </table>
@@ -45,7 +49,7 @@
     <% end %>
  </table>
 <% end %>
-<%= paginate(@movies) %>
+
 
 
 
