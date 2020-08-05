@@ -11,19 +11,23 @@ class UsersController < ApplicationController
           log_in(@user)
           redirect_to profile_path
         else
-          flash[:errors] = user.errors.full_messages
+          flash[:errors] = @user.errors.full_messages
           render :new
         end
       end
 
       def edit 
-       
-        @user = User.find(params[:id])
-       # need to handle protections here 
+        if logged_in? 
+          @user = current_user
+        else 
+          redirect_to login_path
+        end 
+  
       end 
 
       def update
-      
+        @user = current_user 
+        if current_user == @user 
         @user.update(user_params)
           flash[:success] = "Profile updated"
           if @user.save
@@ -31,7 +35,11 @@ class UsersController < ApplicationController
           else 
             render :edit
           end 
-       # need to handle protections here 
+        else 
+          flash[:notice] = "Not Authorized!"
+          redirect_to login_path
+        end 
+        
       end 
 
 

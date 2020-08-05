@@ -1,10 +1,7 @@
 <h1 class= "display-4 text-dark text-center">Reviews for: <%= link_to @movie.title, movie_path(@movie), class: 'text-warning'%></h1>
 <div class="d-flex justify-content-center flex-wrap row-hl">
-<% if false %>
-<div class="p-4 item-hl">
-<div class="row">
-<div class="card-deck">
-<% end %>
+
+
 <% @movie.reviews.each do |review| %>
 
 
