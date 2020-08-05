@@ -72,3 +72,5 @@ gem "kaminari", "~> 1.2"
 gem "kaminari-bootstrap", "~> 3.0"
 
 gem "activestorage", "~> 6.0"
+
+gem "omniauth-facebook", "~> 6.0"
