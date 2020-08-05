@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       log_in(@user)
        redirect_to '/profile'
     else
+      flash[:danger] = "Invalid Credentials Given"
        redirect_to '/login'
     end
   end
@@ -17,9 +18,6 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end 
 
-
-  def login
-  end
 
   def profile
   end

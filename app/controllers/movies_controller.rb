@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
         @search = params[:search]
         if @search
             @movie = Movie.find_or_create_from_api(params[:search]) 
+            flash.now[:notice] = "We have exactly #{@movies.length}!"
         else 
             @movies = Movie.page(params[:page])
         end 
@@ -44,10 +45,7 @@ class MoviesController < ApplicationController
         end 
     end 
 
-        ## need to create a movie from content from OMDB so is this a POST request using HTTParty? Should I use URI?
-        ## They will then use that data to pop lists unwatched watched 
-        ## they will have full CRUD on reviews but I want to be able to pull images etc eventually from the API
-  
+    
 
     def show 
     end 

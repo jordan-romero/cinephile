@@ -11,7 +11,7 @@ class UsersController < ApplicationController
           log_in(@user)
           redirect_to profile_path
         else
-          flash[:errors] = @user.errors.full_messages
+          @errors = @user.errors.full_messages 
           render :new
         end
       end
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
           if @user.save
             redirect_to profile_path
           else 
+            @errors = @user.errors.full_messages
             render :edit
           end 
         else 
