@@ -43,6 +43,8 @@ class UsersController < ApplicationController
         
       end 
 
+      # password confirmation not working - can change info without password 
+
 
       def destroy
         session.delete :user_id

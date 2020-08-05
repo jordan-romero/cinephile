@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   
   get '/profile', to: 'users#profile', as: :profile 
+
+  #allows everyone to view profile page but only update or edit if current_user? 
  
 
   resources :lists

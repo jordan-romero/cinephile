@@ -1,6 +1,6 @@
 class User < ApplicationRecord
    has_secure_password
-   has_one_attached :avatar 
+   has_one_attached :avatar
    has_many :reviews
    has_many :movies, through: :reviews
    has_many :lists 

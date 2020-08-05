@@ -1,3 +1,11 @@
 <h1 class= "display-4 text-center text-dark">Edit your Info:</h1>
-
+<div class= "text-center h6 text-danger">
+  <% if @errors %>
+    <ul class="list-unstyled">
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    <ul>
+  <% end %>
+  </div>
 <%= render 'form'%>
