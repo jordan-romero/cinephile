@@ -1,4 +1,4 @@
-
+<% if logged_in? %>
 <div class="container">
   <div class="row">
     <div class="col">
@@ -17,6 +17,9 @@
             <li class="list-group-item text-center text-dark">Email: <%= current_user.email %></li>
             <li class="list-group-item text-center text-dark">Number of Reviews:<%= current_user.reviews.count %></li>
         </ul>
+        </div>
+        <div class= "card-footer text-center bg-dark text-warning">
+                    <div> <%=link_to "Edit Profile", edit_user_path(current_user), class: 'text-warning'%></div>
         </div>
     </div>
   </div>
@@ -49,4 +52,8 @@
         </div>
     </div>
   </div>
-  
+  <% else %>
+
+  <h1 class= 'display-4 text-danger text-center' > You're not Logged in! </h1>
+
+  <% end %>

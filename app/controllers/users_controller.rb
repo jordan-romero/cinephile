@@ -16,6 +16,25 @@ class UsersController < ApplicationController
         end
       end
 
+      def edit 
+       
+        @user = User.find(params[:id])
+       # need to handle protections here 
+      end 
+
+      def update
+      
+        @user.update(user_params)
+          flash[:success] = "Profile updated"
+          if @user.save
+            redirect_to profile_path
+          else 
+            render :edit
+          end 
+       # need to handle protections here 
+      end 
+
+
       def destroy
         session.delete :user_id
         redirect_to root_path
@@ -27,4 +46,5 @@ class UsersController < ApplicationController
      def user_params
         params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :avatar)
      end 
+
 end
