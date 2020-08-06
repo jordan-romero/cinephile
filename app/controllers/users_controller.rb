@@ -43,6 +43,11 @@ class UsersController < ApplicationController
         
       end 
 
+      def most_reviews
+        authenticate
+        @users = User.most_reviews
+      end
+
       # password confirmation not working - can change info without password 
 
 

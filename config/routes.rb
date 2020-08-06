@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   #allows everyone to view profile page but only update or edit if current_user? 
  
-
+  get '/users/most_reviews' => 'users#most_reviews', as: :most_reviews
+  
   resources :lists
 
   resources :movies do 

@@ -1,5 +1,11 @@
 <h1 class="pt-3 display-4 text-center bg-light text-dark">Cinephile Entertainment Collection</h1>
-
+<div class="d-flex justify-content-around row-hl p-2 bg-light">
+    <%= form_tag(movies_path, method: :get) do %>   
+            <%= text_field_tag :search, nil, placeholder: 'Search by Title' %>
+            <%= submit_tag ("Search"), class: 'btn btn-outline-warning ml-3' %>
+        
+    <% end %>
+</div>
 
 <% if @search %>
 <% if !@movie.id.present? %>
