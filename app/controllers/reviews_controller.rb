@@ -97,5 +97,5 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:rating, :content, :movie_id, :user_id)
     end 
-
+ ## set_movie before action 
 end

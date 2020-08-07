@@ -6,7 +6,6 @@ class MoviesController < ApplicationController
         @search = params[:search]
         if @search
             @movie = Movie.find_or_create_from_api(params[:search]) 
-            flash.now[:notice] = "We have exactly #{@movies.length}!"
         else 
             @movies = Movie.page(params[:page])
         end 
