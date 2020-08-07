@@ -7,6 +7,11 @@ class User < ApplicationRecord
 
    validates :name, presence: true 
    validates :email, presence: true 
+   validates :password, :presence => true,
+                       :confirmation => true,
+                       :length => {:within => 6..40},
+                       :on => :create,
+                       :on => :update
 
    scope :most_reviews, -> {joins(:reviews).group("users.id").order("count(reviews.id) DESC").limit(10)}
    #validates :username, presence: true, uniqueness: true
