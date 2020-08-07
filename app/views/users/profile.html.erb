@@ -5,7 +5,8 @@
     <% if current_user.avatar.attached? %>
         <img class="img-thumbnail rounded border border-warning ml-5 mt-4" style="width: 200px; height 200px" src=<%= url_for(current_user.avatar)%>>
     <%else%>
-        <p class="pl-5 mt-5 h5 text-warning bg-dark"style="width: 20rem;">Image not Found!</p>
+        <div class=" ml-5 mt-4"><%= image_tag('avatar_ninja.png')%></div>
+       
     <% end %>
     </div>
     <div class="col">
