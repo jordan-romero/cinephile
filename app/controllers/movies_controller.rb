@@ -36,7 +36,7 @@ class MoviesController < ApplicationController
             if list = List.find(params[:movie][:list_ids])
                 @movie.lists << list
             end 
-            flash[:success] = "Your movie was successfully updated."
+            flash[:success] = "Movie was successfully added to list."
             redirect_to @movie 
         else 
             @errors = @movie.errors.full_messages
