@@ -7,8 +7,8 @@ module MoviesHelper
     end 
 
     def default_poster(movie)
-        if @movie.poster.nil?
-          return 'assets/images/default.png'
+        if @movie.poster == "N/A"
+            asset_path('download.png')
        else
           @movie.poster 
        end

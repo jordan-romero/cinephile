@@ -1,7 +1,7 @@
 <br>
 <div class="d-flex justify-content-around row-hl">
     <div class="card border-dark" style="width: 25rem;" style="display:flex">
-        <img class= "card-img-top" src=<%= (@movie.poster)  %>>
+        <img class= "card-img-top" src=<%= (default_poster(@movie))  %>>
             <div class="card-content text-center">
                 <div class="h5 card-title text-dark"><%= @movie.title %></div>
                     <h6> Genre(s):<%= @movie.genre %></h6>
