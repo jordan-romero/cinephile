@@ -3,7 +3,11 @@
 one:
   text: MyString
   character: MyString
+  user: one
+  movie: one
 
 two:
   text: MyString
   character: MyString
+  user: two
+  movie: two
