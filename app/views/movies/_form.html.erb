@@ -24,14 +24,7 @@
     </div>
    <div class="form-group" style="width :50em;"><%= form.collection_select :list_ids, List.all, :id, :name %> 
    </div>
-   <h1> Add your favorite Quote: </h1>
-        <%= form.fields_for :quotes do |quote| %>
-            <%= quote.label :text %>
-            <%= quote.text_field :text%>
-
-            <%= quote.label :character %>
-            <%= quote.text_field :character %>
-        <% end %>
+  
 
    <%= form.submit %>
 

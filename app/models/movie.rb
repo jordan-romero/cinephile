@@ -1,7 +1,6 @@
 class Movie < ApplicationRecord
     has_many :quotes 
     has_many :users, through: :quotes 
-    accepts_nested_attributes_for :quotes 
 
     has_many :movie_lists
     has_many :lists, through: :movie_lists
