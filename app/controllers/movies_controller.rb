@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
 
     def new 
         @movie = Movie.new
+        @movie.quotes.build
         
     end 
 
@@ -73,7 +74,12 @@ class MoviesController < ApplicationController
         :actors,
         :plot,
         :imdbRating,
-        :director)
+        :director, 
+        quotes_attributes: [
+            :text, 
+            :character
+        ]
+        )
     end 
    
 
