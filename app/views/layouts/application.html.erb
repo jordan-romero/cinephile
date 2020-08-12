@@ -17,33 +17,31 @@
 
   <body>
   <% if logged_in? %>
-  <nav class="navbar navbar-expand-lg nav-fill navbar-light bg-dark">
-        <div class="container "> 
+  <nav class="navbar navbar-expand-sm nav-fill navbar-light bg-dark ">
             <div><%= link_to "Cinephile", root_path, class: "text-warning navbar-brand"%></div>
               <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarnav">
                 <span class="navbar-toggler-icon"></span>
               </button>
             <div class="collapse navbar-collapse" id="navbarnav">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item pr-4">
+             
                     <%= link_to "Profile", profile_path, class: 'text-light nav-link'%>
-                  </li>
-                  <li class="nav-item pr-4">
+                  
+                  
                     <%= link_to "Cinephile Collection", movies_path, class: 'text-light nav-link'%>
-                  </li>
-                  <li class="nav-item pr-4 ">
+                
+               
                     <%=link_to "Create a Watch List", new_list_path(@list), class: "text-light nav-link" %> 
-                  </li>
-                  <li class="nav-item pr-4 ">
+                  
+                  
                     <%= link_to "All Lists", lists_path, class: 'text-light nav-link'%>
-                  </li>
-                  <li class="nav-item pr-4 ">
+                  
+                  
                     <%= link_to "Top Reviewers", most_reviews_path, class: 'text-light nav-link' %>
-                  </li>
-                  <li class="nav-item">
+                  
+                
                     <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-outline-warning" %>
-                  </li>
-              </ul>
+                 
+             
           </div>
         </div>
     </nav>
@@ -54,21 +52,10 @@
             <div><%= link_to "Cinephile", root_path, class: "text-warning navbar-brand"%></div>
               <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarnav">
                 <span class="navbar-toggler-icon"></span>
-              </button>
-            <div class="collapse navbar-collapse" id="navbarnav">
-              <ul class="nav nav-pills nav-fill">
-                  <li class="nav-item pr-4 pl-4">
-                    <%= link_to "Log In", login_path, class: 'text-light nav-link' %>
-                  </li>
-                  <li class="nav-item pr-5 pl-5">
-                    <%= link_to 'Log in with Facebook!', '/auth/facebook', class: 'text-light nav-link' %>
-                  </li>
-                  <li class="nav-item pr-5 pl-5">
+              </button>  
+                    <%= link_to "Log In", login_path, class: 'text-light nav-link' %>              
+                    <%= link_to 'Log in with Facebook!', '/auth/facebook', class: 'text-light nav-link' %>            
                     <%= button_to "Sign Up", '/users/new', method: :get, class: 'btn btn-outline-warning'%>
-                  </li>
-            
-              </ul> 
-              </div>
           </div>
     </nav>
     <% end %>
