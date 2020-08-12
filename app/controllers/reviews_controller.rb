@@ -21,7 +21,8 @@ class ReviewsController < ApplicationController
             @movie = Movie.find_by(id: params[:movie_id])
             @review = @movie.reviews.find_by(id: params[:id])
             if @review.nil?
-              redirect_to movie_review_path(@movie), alert: "Movie not found"
+              flash[:notice] = "Movie not found."
+              redirect_to movie_review_path(@movie)
             end
         else
             @review = Review.find(params[:id])
@@ -33,7 +34,8 @@ class ReviewsController < ApplicationController
     def new 
         if params[:movie_id] && !Movie.exists?
             (params[:movie_id])
-            redirect_to movies_path, alert: "Movie not Found."
+            flash[:notice] = "Movie not found."
+            redirect_to movies_path
         else 
             @review = Review.new(movie_id: params[:movie_id])
         end 
@@ -53,13 +55,18 @@ class ReviewsController < ApplicationController
         if params[:movie_id]
             movie = Movie.find_by(id:params[:movie_id])
             if movie.nil? 
-                redirect_to movies_path, alert: "Movie not Found."
+                flash[:notice] = "Movie not found."
+                redirect_to movies_path
             else
                 @review = movie.reviews.find_by(id: params[:id])
                 authorize(@review)
-                redirect_to reviews_path, alert: "Review not Found." if @review.nil? 
+                if @review.nil?
+                    flash[:notice] = "Review not found." 
+                redirect_to reviews_path 
+                end 
             end 
         else 
+            authorize(@review)
             @review = Review.find(params[:id])
         end 
     end 
@@ -67,6 +74,7 @@ class ReviewsController < ApplicationController
     def update   
                 
         @review.update(review_params)
+        authorize(@review) 
         @movie = @review.movie 
             if @review.save 
                 redirect_to movie_review_path(@movie, @review)

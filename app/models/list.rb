@@ -10,15 +10,4 @@ class List < ApplicationRecord
     validates :description, length: { maximum: 100, too_long: "%{count} characters is the maximum allowed" }
    
 
-
-    # def already_added? 
-    #     if self.movie_id.present?
-    #         flash[:notice] = "You already added that to this list!"
-    #     else     
-    #         if self.find(params[:list][:movie_ids])
-    #             @list.movies << movie 
-    #         end 
-    #     end 
-    # end 
-  
 end

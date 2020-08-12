@@ -40,6 +40,7 @@ class ListsController < ApplicationController
     end 
 
     def destroy 
+        authorize(@list)
         if @list.destroy
             @movie = @list.movies
             redirect_to lists_path
