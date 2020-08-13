@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update]
   get '/profile', to: 'users#profile', as: :profile 
   get 'login', to: 'sessions#new'
+  post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#fb_create'
   
