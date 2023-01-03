@@ -55,7 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "figaro", "~> 1.2"
 
-gem "httparty", "~> 0.18.1"
+gem "httparty", "~> 0.21.0"
 
 gem "json", "~> 2.3"
 
